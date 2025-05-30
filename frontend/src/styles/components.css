@@ -1,1 +1,639 @@
+/* Pi Lottery Platform Component Styles */
 
+/* =============================================
+   LOTTERY CARD COMPONENTS
+   ============================================= */
+
+.lottery-card {
+  @apply bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-3xl p-6 border border-white/10;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.lottery-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.lottery-card:hover::before {
+  left: 100%;
+}
+
+.lottery-card:hover {
+  @apply bg-white/15 border-white/20 transform scale-105;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.lottery-card-header {
+  @apply flex items-center justify-between mb-6;
+}
+
+.lottery-card-title {
+  @apply flex items-center space-x-3;
+}
+
+.lottery-card-badge {
+  @apply px-3 py-1 rounded-full text-sm font-medium;
+}
+
+.lottery-card-badge--pi {
+  @apply bg-blue-500/10 text-blue-400;
+}
+
+.lottery-card-badge--ads {
+  @apply bg-green-500/10 text-green-400;
+}
+
+.lottery-card-stats {
+  @apply grid grid-cols-2 gap-6 mb-6;
+}
+
+.lottery-stat-card {
+  @apply text-center p-4 bg-white/5 rounded-2xl;
+  transition: all 0.2s ease-in-out;
+}
+
+.lottery-stat-card:hover {
+  @apply bg-white/10 transform scale-105;
+}
+
+.lottery-countdown {
+  @apply flex items-center justify-between p-4 bg-gradient-to-r from-red-500/20 to-orange-500/20 rounded-2xl mb-6;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.lottery-entry-button {
+  @apply w-full py-4 rounded-2xl font-bold text-lg transition-all duration-300;
+  position: relative;
+  overflow: hidden;
+}
+
+.lottery-entry-button:not(:disabled):hover {
+  @apply transform scale-105;
+}
+
+.lottery-entry-button--primary {
+  @apply bg-gradient-to-r from-yellow-500 to-orange-500 text-white;
+}
+
+.lottery-entry-button--primary:hover {
+  @apply from-yellow-600 to-orange-600;
+}
+
+.lottery-entry-button--disabled {
+  @apply bg-gray-600 text-gray-400 cursor-not-allowed;
+}
+
+.lottery-entry-button--processing {
+  @apply bg-yellow-600 text-white;
+}
+
+.lottery-entry-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s;
+}
+
+.lottery-entry-button:hover::before {
+  left: 100%;
+}
+
+/* Prize Distribution Component */
+.prize-distribution {
+  @apply mt-6;
+}
+
+.prize-distribution-header {
+  @apply text-lg font-bold mb-3 flex items-center;
+}
+
+.prize-row {
+  @apply flex items-center justify-between p-2 bg-white/5 rounded-lg mb-2;
+  transition: all 0.2s ease-in-out;
+}
+
+.prize-row:hover {
+  @apply bg-white/10;
+}
+
+.prize-position {
+  @apply w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs;
+}
+
+.prize-position--first {
+  @apply bg-yellow-500 text-white;
+  box-shadow: 0 0 15px rgba(251, 191, 36, 0.5);
+}
+
+.prize-position--second {
+  @apply bg-gray-400 text-white;
+  box-shadow: 0 0 15px rgba(156, 163, 175, 0.5);
+}
+
+.prize-position--third {
+  @apply bg-orange-600 text-white;
+  box-shadow: 0 0 15px rgba(234, 88, 12, 0.5);
+}
+
+.prize-position--other {
+  @apply bg-blue-500 text-white;
+}
+
+/* =============================================
+   ADMIN PANEL COMPONENTS
+   ============================================= */
+
+.admin-panel {
+  @apply min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white;
+}
+
+.admin-header {
+  @apply flex items-center justify-between mb-8 p-4 bg-white/5 backdrop-blur-lg rounded-2xl border border-white/10;
+}
+
+.admin-nav-tabs {
+  @apply flex space-x-1 mb-6 p-1 bg-white/5 rounded-xl backdrop-blur-lg border border-white/10;
+}
+
+.admin-nav-tab {
+  @apply flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300;
+}
+
+.admin-nav-tab--active {
+  @apply bg-blue-500/30 text-blue-300 border border-blue-500/50;
+}
+
+.admin-nav-tab--inactive {
+  @apply hover:bg-white/5 text-gray-400;
+}
+
+.admin-card {
+  @apply bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-3xl p-6 border border-white/10;
+}
+
+.admin-stat-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6;
+}
+
+.admin-stat-card {
+  @apply p-6 rounded-2xl border border-white/10;
+}
+
+.admin-stat-card--revenue {
+  @apply bg-green-500/10;
+}
+
+.admin-stat-card--users {
+  @apply bg-blue-500/10;
+}
+
+.admin-stat-card--lotteries {
+  @apply bg-purple-500/10;
+}
+
+.admin-stat-card--prizes {
+  @apply bg-yellow-500/10;
+}
+
+/* Toggle Switch Component */
+.toggle-switch {
+  @apply relative w-12 h-6 rounded-full transition-all duration-300 cursor-pointer;
+}
+
+.toggle-switch--on {
+  @apply bg-green-500;
+}
+
+.toggle-switch--off {
+  @apply bg-gray-600;
+}
+
+.toggle-switch-handle {
+  @apply absolute top-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform duration-300;
+}
+
+.toggle-switch--on .toggle-switch-handle {
+  @apply translate-x-6;
+}
+
+.toggle-switch--off .toggle-switch-handle {
+  @apply translate-x-0.5;
+}
+
+/* Prize Confirmation Component */
+.prize-confirmation-card {
+  @apply flex items-center justify-between p-4 bg-white/5 rounded-xl border border-white/10 mb-4;
+  transition: all 0.3s ease-in-out;
+}
+
+.prize-confirmation-card:hover {
+  @apply bg-white/8 border-white/15;
+}
+
+.prize-confirmation-details {
+  @apply text-right;
+}
+
+.prize-amount-breakdown {
+  @apply space-y-1;
+}
+
+.prize-fee-deduction {
+  @apply text-xs text-red-300;
+}
+
+.prize-net-amount {
+  @apply border-t border-gray-600 pt-1;
+}
+
+/* =============================================
+   MODAL AND OVERLAY COMPONENTS
+   ============================================= */
+
+.modal-overlay {
+  @apply fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.modal-content {
+  @apply bg-slate-800 border border-white/20 rounded-2xl p-6 max-w-md w-full mx-4;
+  animation: scaleIn 0.3s ease-out;
+}
+
+.modal-header {
+  @apply text-xl font-bold mb-4;
+}
+
+.modal-body {
+  @apply text-gray-300 mb-6;
+}
+
+.modal-footer {
+  @apply flex space-x-3;
+}
+
+/* =============================================
+   AUTHENTICATION COMPONENTS
+   ============================================= */
+
+.auth-container {
+  @apply min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white flex items-center justify-center;
+}
+
+.auth-card {
+  @apply max-w-md w-full mx-4;
+}
+
+.auth-form {
+  @apply bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/10;
+}
+
+.auth-header {
+  @apply text-center mb-6;
+}
+
+.auth-icon {
+  @apply w-16 h-16 mx-auto mb-4;
+}
+
+.auth-title {
+  @apply text-2xl font-bold;
+}
+
+.auth-subtitle {
+  @apply text-gray-400;
+}
+
+.auth-form-group {
+  @apply space-y-4;
+}
+
+.auth-label {
+  @apply block text-sm font-medium text-gray-300 mb-2;
+}
+
+.auth-input {
+  @apply w-full px-4 py-2 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400;
+  @apply focus:outline-none focus:border-blue-400 transition-all duration-300;
+}
+
+.auth-error {
+  @apply p-3 bg-red-500/20 border border-red-500/30 rounded-xl text-red-300 text-sm;
+}
+
+.auth-button {
+  @apply w-full py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl;
+  @apply hover:from-blue-600 hover:to-blue-700 transition-all duration-300 font-medium;
+}
+
+/* =============================================
+   NOTIFICATION COMPONENTS
+   ============================================= */
+
+.notification {
+  @apply fixed top-4 right-4 z-50 p-4 rounded-xl shadow-lg max-w-sm;
+  animation: slideInRight 0.3s ease-out;
+}
+
+.notification--success {
+  @apply bg-green-500/90 backdrop-blur-lg border border-green-400/20 text-white;
+}
+
+.notification--error {
+  @apply bg-red-500/90 backdrop-blur-lg border border-red-400/20 text-white;
+}
+
+.notification--warning {
+  @apply bg-yellow-500/90 backdrop-blur-lg border border-yellow-400/20 text-white;
+}
+
+.notification--info {
+  @apply bg-blue-500/90 backdrop-blur-lg border border-blue-400/20 text-white;
+}
+
+/* =============================================
+   LOADING COMPONENTS
+   ============================================= */
+
+.loading-spinner {
+  @apply w-16 h-16 border-4 border-t-transparent rounded-full animate-spin mx-auto mb-4;
+}
+
+.loading-spinner--primary {
+  @apply border-yellow-400;
+}
+
+.loading-spinner--blue {
+  @apply border-blue-400;
+}
+
+.loading-container {
+  @apply min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white flex items-center justify-center;
+}
+
+.loading-text {
+  @apply text-xl text-center;
+}
+
+/* Skeleton Loading */
+.skeleton-card {
+  @apply bg-white/5 rounded-3xl p-6 animate-pulse;
+}
+
+.skeleton-line {
+  @apply bg-white/10 rounded h-4 mb-3;
+}
+
+.skeleton-line--short {
+  @apply w-3/4;
+}
+
+.skeleton-line--medium {
+  @apply w-1/2;
+}
+
+.skeleton-line--long {
+  @apply w-full;
+}
+
+.skeleton-circle {
+  @apply bg-white/10 rounded-full w-12 h-12;
+}
+
+/* =============================================
+   AD WATCHING COMPONENTS
+   ============================================= */
+
+.ad-watch-container {
+  @apply p-4 bg-blue-500/20 rounded-2xl text-center mb-6;
+}
+
+.ad-watch-spinner {
+  @apply w-8 h-8 border-4 border-blue-400 border-t-transparent rounded-full animate-spin mx-auto mb-2;
+}
+
+.ad-watch-text {
+  @apply text-blue-300;
+}
+
+.ad-watch-subtitle {
+  @apply text-sm text-gray-400;
+}
+
+.ad-cooldown-container {
+  @apply p-4 bg-orange-500/20 rounded-2xl text-center mb-6;
+}
+
+.ad-cooldown-icon {
+  @apply w-8 h-8 text-orange-400 mx-auto mb-2;
+}
+
+.ad-cooldown-text {
+  @apply text-orange-300;
+}
+
+/* =============================================
+   STATISTICS COMPONENTS
+   ============================================= */
+
+.stats-grid {
+  @apply space-y-4;
+}
+
+.stats-row {
+  @apply flex justify-between items-center;
+}
+
+.stats-label {
+  @apply text-gray-400;
+}
+
+.stats-value {
+  @apply font-bold;
+}
+
+.stats-value--primary {
+  @apply text-yellow-400;
+}
+
+.stats-value--success {
+  @apply text-green-400;
+}
+
+.stats-value--normal {
+  @apply text-white;
+}
+
+/* =============================================
+   RESPONSIVE UTILITIES
+   ============================================= */
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .lottery-card {
+    @apply p-4;
+  }
+  
+  .lottery-card-stats {
+    @apply grid-cols-1 gap-4;
+  }
+  
+  .admin-stat-grid {
+    @apply grid-cols-1 gap-4;
+  }
+  
+  .modal-content {
+    @apply mx-2;
+  }
+  
+  .lottery-entry-button {
+    @apply py-3 text-base;
+  }
+}
+
+/* Tablet Optimizations */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .admin-stat-grid {
+    @apply grid-cols-2;
+  }
+}
+
+/* =============================================
+   ANIMATION CLASSES
+   ============================================= */
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.animate-slide-up {
+  animation: slideInUp 0.5s ease-out;
+}
+
+.animate-slide-down {
+  animation: slideInDown 0.5s ease-out;
+}
+
+.animate-slide-left {
+  animation: slideInLeft 0.5s ease-out;
+}
+
+.animate-slide-right {
+  animation: slideInRight 0.5s ease-out;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.3s ease-out;
+}
+
+.animate-bounce-subtle {
+  animation: bounce-subtle 2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* =============================================
+   PRINT STYLES
+   ============================================= */
+
+@media print {
+  .lottery-card,
+  .admin-card,
+  .auth-form {
+    @apply bg-white border border-gray-300 text-black;
+  }
+  
+  .lottery-entry-button,
+  .auth-button,
+  .btn-primary,
+  .btn-secondary {
+    @apply bg-gray-200 text-black border border-gray-400;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* =============================================
+   HIGH CONTRAST MODE
+   ============================================= */
+
+@media (prefers-contrast: high) {
+  .lottery-card,
+  .admin-card,
+  .auth-form {
+    @apply bg-black border-2 border-white;
+  }
+  
+  .lottery-stat-card,
+  .prize-row {
+    @apply bg-gray-900 border border-white;
+  }
+  
+  .toggle-switch--on {
+    @apply bg-white;
+  }
+  
+  .toggle-switch-handle {
+    @apply bg-black;
+  }
+}
+
+/* =============================================
+   FOCUS MANAGEMENT
+   ============================================= */
+
+.focus-visible {
+  @apply outline-none ring-2 ring-yellow-400 ring-opacity-75 ring-offset-2 ring-offset-gray-900;
+}
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  @apply outline-none ring-2 ring-yellow-400 ring-opacity-75 ring-offset-2 ring-offset-transparent;
+}
+
+/* =============================================
+   CUSTOM SCROLLBARS
+   ============================================= */
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  @apply bg-white/5 rounded-full;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-white/20 rounded-full;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  @apply bg-white/30;
+}
