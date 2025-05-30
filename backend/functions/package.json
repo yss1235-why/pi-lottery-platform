@@ -1,1 +1,152 @@
-
+{
+  "name": "pi-lottery-backend",
+  "version": "1.0.0",
+  "description": "Pi Lottery Platform Backend Functions",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log",
+    "test": "jest",
+    "test:watch": "jest --watch --coverage",
+    "lint": "eslint --ext .js,.ts src/",
+    "lint:fix": "eslint --ext .js,.ts src/ --fix"
+  },
+  "engines": {
+    "node": "18"
+  },
+  "dependencies": {
+    "firebase-admin": "^12.0.0",
+    "firebase-functions": "^4.6.0",
+    "cors": "^2.8.5",
+    "axios": "^1.6.0",
+    "crypto": "^1.0.1",
+    "uuid": "^9.0.0",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.4",
+    "express": "^4.18.2",
+    "express-rate-limit": "^7.1.5",
+    "helmet": "^7.1.0",
+    "winston": "^3.11.0",
+    "joi": "^17.11.0",
+    "bcrypt": "^5.1.1",
+    "jsonwebtoken": "^9.0.2",
+    "node-cron": "^3.0.3",
+    "sharp": "^0.32.6",
+    "papaparse": "^5.4.1",
+    "csv-writer": "^1.6.0",
+    "archiver": "^6.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0",
+    "eslint": "^8.54.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^3.1.0",
+    "jest": "^29.7.0",
+    "typescript": "^5.3.0",
+    "supertest": "^6.3.3",
+    "@types/cors": "^2.8.15",
+    "@types/express": "^4.17.21",
+    "@types/lodash": "^4.14.202",
+    "@types/uuid": "^9.0.7",
+    "@types/bcrypt": "^5.0.2",
+    "@types/jsonwebtoken": "^9.0.5"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "collectCoverageFrom": [
+      "src/**/*.{js,ts}",
+      "!src/**/*.test.{js,ts}",
+      "!src/**/*.spec.{js,ts}"
+    ],
+    "coverageDirectory": "coverage",
+    "coverageReporters": [
+      "text",
+      "lcov",
+      "html"
+    ]
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "ecmaVersion": 2018,
+      "sourceType": "module"
+    },
+    "extends": [
+      "eslint:recommended",
+      "google"
+    ],
+    "rules": {
+      "no-restricted-globals": [
+        "error",
+        "name",
+        "length"
+      ],
+      "prefer-arrow-callback": "error",
+      "quotes": [
+        "error",
+        "single"
+      ],
+      "max-len": [
+        "error",
+        {
+          "code": 120,
+          "ignoreUrls": true,
+          "ignoreStrings": true,
+          "ignoreTemplateLiterals": true,
+          "ignoreRegExpLiterals": true
+        }
+      ],
+      "comma-dangle": [
+        "error",
+        "never"
+      ],
+      "object-curly-spacing": [
+        "error",
+        "always"
+      ],
+      "indent": [
+        "error",
+        2
+      ]
+    },
+    "overrides": [
+      {
+        "files": [
+          "**/*.spec.*"
+        ],
+        "env": {
+          "mocha": true
+        },
+        "rules": {}
+      }
+    ],
+    "globals": {}
+  },
+  "private": true,
+  "keywords": [
+    "firebase",
+    "functions",
+    "pi-network",
+    "lottery",
+    "cryptocurrency",
+    "blockchain"
+  ],
+  "author": {
+    "name": "Pi Lottery Team",
+    "email": "backend@pilottery.app"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/pi-lottery-platform.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/pi-lottery-platform/issues"
+  }
+}
