@@ -1,1 +1,183 @@
-
+{
+  "name": "pi-lottery-platform-frontend",
+  "version": "1.0.0",
+  "description": "Decentralized lottery platform for Pi Network ecosystem - Frontend Application",
+  "main": "src/index.js",
+  "homepage": "https://pilottery.app",
+  "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "lint": "eslint src/**/*.{js,jsx} --max-warnings=0",
+    "lint:fix": "eslint src/**/*.{js,jsx} --fix",
+    "format": "prettier --write src/**/*.{js,jsx,css,md,json}",
+    "format:check": "prettier --check src/**/*.{js,jsx,css,md,json}",
+    "analyze": "npm run build && npx bundle-analyzer build/static/js/*.js",
+    "firebase:emulators": "firebase emulators:start",
+    "firebase:deploy": "npm run build && firebase deploy",
+    "firebase:deploy:hosting": "npm run build && firebase deploy --only hosting",
+    "firebase:deploy:functions": "firebase deploy --only functions",
+    "precommit": "npm run lint && npm run format:check",
+    "postinstall": "patch-package",
+    "clean": "rm -rf build node_modules/.cache",
+    "test:coverage": "npm test -- --coverage --watchAll=false",
+    "test:ci": "CI=true npm test -- --coverage --watchAll=false --reporters=default --reporters=jest-junit",
+    "start:prod": "serve -s build -l 3000",
+    "security:audit": "npm audit --audit-level=high",
+    "deps:update": "npx npm-check-updates -u",
+    "build:analyze": "npm run build && npx webpack-bundle-analyzer build/static/js/*.js"
+  },
+  "dependencies": {
+    "@pi-network/sdk": "^2.0.0",
+    "firebase": "^10.7.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.8.0",
+    "react-scripts": "5.0.1",
+    "lucide-react": "^0.263.1",
+    "uuid": "^9.0.0",
+    "axios": "^1.6.0",
+    "date-fns": "^2.30.0",
+    "react-hot-toast": "^2.4.1",
+    "framer-motion": "^10.16.0",
+    "clsx": "^2.0.0",
+    "react-hook-form": "^7.48.0",
+    "zod": "^3.22.0",
+    "@hookform/resolvers": "^3.3.0",
+    "react-query": "^3.39.0",
+    "lodash": "^4.17.21",
+    "crypto-js": "^4.2.0",
+    "qrcode.react": "^3.1.0",
+    "react-confetti": "^6.1.0",
+    "react-intersection-observer": "^9.5.0",
+    "react-lazyload": "^3.2.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.3.0",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.32",
+    "@tailwindcss/forms": "^0.5.7",
+    "@tailwindcss/typography": "^0.5.10",
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "eslint": "^8.55.0",
+    "eslint-config-react-app": "^7.0.1",
+    "eslint-plugin-react": "^7.33.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-import": "^2.29.0",
+    "prettier": "^3.1.0",
+    "prettier-plugin-tailwindcss": "^0.5.7",
+    "patch-package": "^8.0.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/user-event": "^14.5.0",
+    "jest-junit": "^16.0.0",
+    "webpack-bundle-analyzer": "^4.10.0",
+    "serve": "^14.2.0",
+    "npm-check-updates": "^16.14.0",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.3.0",
+    "source-map-explorer": "^2.5.3"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all",
+      "not safari < 10",
+      "not chrome < 51",
+      "not android < 5",
+      "not ie < 12"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version",
+      "last 1 edge version"
+    ]
+  },
+  "keywords": [
+    "pi-network",
+    "lottery",
+    "blockchain",
+    "react",
+    "firebase",
+    "cryptocurrency",
+    "decentralized",
+    "web3",
+    "dapp",
+    "gaming"
+  ],
+  "author": {
+    "name": "Pi Lottery Team",
+    "email": "contact@pilottery.app",
+    "url": "https://pilottery.app"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/pi-lottery-platform.git",
+    "directory": "frontend"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/pi-lottery-platform/issues"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "!src/index.js",
+      "!src/reportWebVitals.js",
+      "!src/setupTests.js",
+      "!src/**/*.test.js",
+      "!src/**/*.spec.js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 70,
+        "functions": 70,
+        "lines": 70,
+        "statements": 70
+      }
+    },
+    "testEnvironment": "jsdom",
+    "setupFilesAfterEnv": ["<rootDir>/src/setupTests.js"]
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ],
+    "rules": {
+      "no-console": "warn",
+      "no-debugger": "error",
+      "no-unused-vars": "error",
+      "react-hooks/exhaustive-deps": "warn",
+      "jsx-a11y/alt-text": "error",
+      "jsx-a11y/aria-props": "error",
+      "jsx-a11y/aria-proptypes": "error",
+      "jsx-a11y/aria-unsupported-elements": "error",
+      "jsx-a11y/role-has-required-aria-props": "error",
+      "jsx-a11y/role-supports-aria-props": "error"
+    }
+  },
+  "prettier": {
+    "semi": true,
+    "trailingComma": "es5",
+    "singleQuote": true,
+    "printWidth": 100,
+    "tabWidth": 2,
+    "useTabs": false,
+    "bracketSpacing": true,
+    "bracketSameLine": false,
+    "arrowParens": "avoid",
+    "endOfLine": "lf",
+    "plugins": ["prettier-plugin-tailwindcss"]
+  },
+  "proxy": "http://localhost:5001"
+}
